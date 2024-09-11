@@ -18,6 +18,9 @@ def main():
     
     if st.button("Salvar"):
         
+        # Fazer o try-except para tratar os erros de validação.
+        # Isso é importante para que o usuário saiba o que está errado, e possa corrigir o erro.
+        
         try:        
             data_hora = datetime.combine(data, hora)
             # Esse data_hora é um objeto datetime que combina a data e a hora que o usuário inseriu
@@ -26,14 +29,6 @@ def main():
             # Aqui, estamos criando uma instância da classe Vendas, que foi definida no arquivo contrato.py
             
             st.write(venda)
-                        
-            # st.write("Dados da venda:")
-            # st.write(f"Email do vendedor: {email}")
-            # st.write(f"Data da venda: {data}")
-            # st.write(f"Hora da venda: {hora}")
-            # st.write(f"Valor da venda: {valor}")
-            # st.write(f"Quantidade de produtos: {quantidade}")
-            # st.write(f"Produto vendido: {produto}")
         
         except ValidationError as e:
             st.error(f"Erro de validação: {e}")
