@@ -6,6 +6,7 @@ from pydantic import ValidationError
 
 
 import contrato
+from database import salvar_no_postgres
 
 def main():
     st.title("Sistema de CRM e Vendas")
@@ -28,7 +29,7 @@ def main():
             venda = Vendas(email=email, data=data, hora=hora, valor=valor, quantidade=quantidade, produto=produto) 
             # Aqui, estamos criando uma instância da classe Vendas, que foi definida no arquivo contrato.py
             
-            st.write(venda)
+            salvar_no_postgres(venda)
         
         except ValidationError as e:
             st.error(f"Erro de validação: {e}")
